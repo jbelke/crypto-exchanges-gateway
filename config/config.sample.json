@@ -28,6 +28,7 @@
         },
         "binance":{
             "enabled":true,
+            "recvWindow":5000,
             "key":"",
             "secret":""
         }

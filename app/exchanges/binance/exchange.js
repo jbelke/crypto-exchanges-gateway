@@ -15,6 +15,7 @@ constructor(config)
     let opt = {
         key:config.exchanges.binance.key,
         secret:config.exchanges.binance.secret,
+        recvWindow:config.exchanges.binance.recvWindow,
         timeout:15000,
         disableBeautification:true
     };
