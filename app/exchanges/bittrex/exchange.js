@@ -8,7 +8,7 @@ class Exchange
 
 constructor(config)
 {
-    this._client = require('node.bittrex.api');
+    this._client = require('node-bittrex-api');
     let opt = {
         apikey:config.exchanges.bittrex.key,
         apisecret:config.exchanges.bittrex.secret,
@@ -119,7 +119,7 @@ tickers(opt)
                         high: parseFloat(entry.High),
                         low: parseFloat(entry.Low),
                         volume: parseFloat(entry.Volume),
-                        timestamp: parseInt(new Date(entry.TimeStamp).getTime() / 1000.0)
+                        timestamp: parseFloat(new Date(entry.TimeStamp).getTime() / 1000.0)
                     }
                 });
                 resolve(list);
@@ -381,7 +381,7 @@ pairs(opt)
                         quantity:entry.Quantity,
                         rate:entry.Price,
                         price:entry.Total,
-                        timestamp:parseInt(new Date(entry.TimeStamp).getTime() / 1000.0)
+                        timestamp:parseFloat(new Date(entry.TimeStamp).getTime() / 1000.0)
                     })
                 });
                 resolve(list);
@@ -525,7 +525,7 @@ pairs(opt)
                          targetRate:parseFloat(entry.Limit),
                          quantity:parseFloat(entry.Quantity),
                          remainingQuantity:parseFloat(entry.QuantityRemaining),
-                         openTimestamp:parseInt(new Date(entry.Opened).getTime() / 1000.0)
+                         openTimestamp:parseFloat(new Date(entry.Opened).getTime() / 1000.0)
                      }
                      // define targetPrice based on quantity & targetRate
                      o.targetPrice = o.quantity * o.targetRate;
@@ -667,7 +667,7 @@ closedOrders(opt)
                         quantity:parseFloat(entry.Quantity),
                         actualRate:parseFloat(entry.PricePerUnit),
                         actualPrice:parseFloat(entry.Price),
-                        closedTimestamp:parseInt(new Date(entry.Closed).getTime() / 1000.0)
+                        closedTimestamp:parseFloat(new Date(entry.Closed).getTime() / 1000.0)
                     }
                     list[o.orderNumber] = o;
                 });

@@ -122,7 +122,7 @@ _tickers(pairs)
                     high: parseFloat(entry.value.highPrice),
                     low: parseFloat(entry.value.lowPrice),
                     volume: parseFloat(entry.value.volume),
-                    timestamp: parseInt(entry.value.closeTime / 1000.0)
+                    timestamp: parseFloat(entry.value.closeTime / 1000.0)
                 }
             });
             resolve(list);
@@ -172,7 +172,7 @@ _tickers(pairs)
 *         "high":0.00575600,
 *         "low":0.00519800,
 *         "volume":274380.34,
-*         "timestamp":1502120848
+*         "timestamp":1502120848.34
 *      },...
 * }
 *
@@ -473,7 +473,7 @@ pairs(opt)
                         quantity:quantity,
                         rate:rate,
                         price:price,
-                        timestamp:parseInt(entry.T / 1000.0)
+                        timestamp:parseFloat(entry.T / 1000.0)
                     })
                 });
                 resolve(list);
@@ -551,7 +551,7 @@ _formatOpenOrders(data)
             orderNumber:entry.clientOrderId,
             targetRate:parseFloat(entry.price),
             quantity:parseFloat(entry.origQty),
-            openTimestamp:parseInt(entry.time / 1000)
+            openTimestamp:parseFloat(entry.time / 1000.0)
         }
         order.targetPrice = order.targetRate * order.quantity;
         order.remainingQuantity = order.quantity - parseFloat(entry.executedQty);
@@ -780,7 +780,7 @@ _formatClosedOrders(data)
             orderNumber:entry.clientOrderId,
             actualRate:parseFloat(entry.price),
             quantity:parseFloat(entry.executedQty),
-            closedTimestamp:parseInt(entry.time / 1000)
+            closedTimestamp:parseFloat(entry.time / 1000.0)
         }
         order.actualPrice = order.actualRate * order.quantity;
         list[order.orderNumber] = order;

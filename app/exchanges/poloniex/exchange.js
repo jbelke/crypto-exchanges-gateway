@@ -118,7 +118,7 @@ tickers(opt)
                         high: parseFloat(value.high24hr),
                         low: parseFloat(value.low24hr),
                         volume: parseFloat(value.quoteVolume),
-                        timestamp: parseInt(new Date().getTime() / 1000.0)
+                        timestamp: parseFloat(new Date().getTime() / 1000.0)
                     }
                 });
                 resolve(list);
@@ -362,7 +362,7 @@ pairs(opt)
                         quantity:parseFloat(entry.amount),
                         rate:parseFloat(entry.rate),
                         price:parseFloat(entry.total),
-                        timestamp:parseInt(new Date(entry.date).getTime() / 1000.0)
+                        timestamp:parseFloat(new Date(entry.date).getTime() / 1000.0)
                     })
                 });
                 resolve(list);
@@ -474,7 +474,7 @@ pairs(opt)
                             targetPrice:parseFloat(entry.total),
                             quantity:parseFloat(entry.startingAmount),
                             remainingQuantity:parseFloat(entry.amount),
-                            openTimestamp:parseInt(new Date(entry.date).getTime() / 1000.0)
+                            openTimestamp:parseFloat(new Date(entry.date).getTime() / 1000.0)
                         }
                         list[o.orderNumber] = o;
                     });
@@ -559,7 +559,7 @@ _formatClosedOrders(openOrders, data, opt)
                 }
             }
             // add/update timestamp
-            let timestamp = parseInt(new Date(entry.date).getTime() / 1000.0);
+            let timestamp = parseFloat(new Date(entry.date).getTime() / 1000.0);
             if (undefined === list[entry.orderNumber].closedTimestamp || timestamp > list[entry.orderNumber].closedTimestamp)
             {
                 list[entry.orderNumber].closedTimestamp = timestamp;
